@@ -1,5 +1,5 @@
-import { Component, OnInit, Input} from '@angular/core';
-import {Router} from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
 import { Chart } from 'chart.js';
@@ -25,17 +25,17 @@ export class WeatherComponent implements OnInit {
   }
 
 
-onFormSubmited(userInput) {
+  onFormSubmited(userInput) {
     console.log(userInput);
     this.weatherService.getWeatherDataByCoords(userInput)
-    .subscribe((data: any) => {
-     this.userInput = data;
+      .subscribe((data: any) => {
+        this.userInput = data;
 
-     this.lat = data.coord.lat;
-     this.lon = data.coord.lon;
+        this.lat = data.coord.lat;
+        this.lon = data.coord.lon;
 
-     /* form.resetForm();  */
-   });
+        /* form.resetForm();  */
+      });
 
     this.weatherService.dailyForecast(userInput)
       .subscribe(res => {
@@ -45,8 +45,8 @@ onFormSubmited(userInput) {
 
         const weatherDates = []
         alldates.forEach((res) => {
-        const jsdate = new Date(res * 1000)
-        weatherDates.push(jsdate.toLocaleTimeString('en', { year: 'numeric', month: 'short', day: 'numeric' }));
+          const jsdate = new Date(res * 1000)
+          weatherDates.push(jsdate.toLocaleTimeString('en', { year: 'numeric', month: 'short', day: 'numeric' }));
         });
         this.chart = new Chart('canvas', {
           type: 'line',
@@ -81,5 +81,5 @@ onFormSubmited(userInput) {
         });
       });
 
- }
+  }
 }

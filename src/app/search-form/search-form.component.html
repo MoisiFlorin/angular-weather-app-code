@@ -1,64 +1,47 @@
-<div class="container" >
+<div class="container">
     <div class="container-form">
-    <form #weatherForm="ngForm" (ngSubmit)="onFormSubmit(weatherForm)">
-            <h4>Enter Latitude and Longitude coordinates to  dispaly weather in your Location</h4>
-        <table>
-            <tr>
-                <td>Latitude:</td> 
-            <td>
-                <input class="form-control"
-                name="lat"
-                type="number"
-                [(ngModel)]="userInput.lat"
-                required
-                placeholder="e.g. 45.75"
-                #lat="ngModel"
-                [ngClass]="{'red-border-class': lon.errors && weatherForm.submitted && !isValidFormSubmitted}">
-                <div *ngIf="lat.errors && weatherForm.submitted && !isValidFormSubmitted" [ngClass] ="'error'">
-                    <div *ngIf="lat.errors.required">
-                        *latitude is required.
-                    </div>
-                </div>
-            </td>
-            </tr>
+        <form #weatherForm="ngForm" (ngSubmit)="onFormSubmit(weatherForm)">
+            <h4>Enter Latitude and Longitude coordinates to dispaly weather in your Location</h4>
+            <table>
+                <tr>
+                    <td>Latitude:</td>
+                    <td>
+                        <input class="form-control" name="lat" type="number" [(ngModel)]="userInput.lat" required
+                            placeholder="e.g. 45.75" #lat="ngModel"
+                            [ngClass]="{'red-border-class': lon.errors && weatherForm.submitted && !isValidFormSubmitted}">
+                        <div *ngIf="lat.errors && weatherForm.submitted && !isValidFormSubmitted" [ngClass]="'error'">
+                            <div *ngIf="lat.errors.required">
+                                *latitude is required.
+                            </div>
+                        </div>
+                    </td>
+                </tr>
 
-            <tr>
-                <td>Longitude:</td>
-            <td>
-                <input class="form-control"
-                name="lon"
-                type="number"
-                [(ngModel)]="userInput.lon" 
-                required 
-                placeholder="e.g. 21.21"
-                #lon="ngModel"
-                [ngClass]="{'red-border-class': lon.errors && weatherForm.submitted && !isValidFormSubmitted}">
-                <div *ngIf="lon.errors && weatherForm.submitted && !isValidFormSubmitted" [ngClass] = "'error'">
-                    <div *ngIf="lon.errors.required">
-                        *longitude is required.
-                    </div> 
-                </div>
-            </td>
-            </tr>
-            
-            <tr>
-                <td colspan="2">
-                    <button>Submit</button>
-                </td>
-            </tr>
-        </table>
+                <tr>
+                    <td>Longitude:</td>
+                    <td>
+                        <input class="form-control" name="lon" type="number" [(ngModel)]="userInput.lon" required
+                            placeholder="e.g. 21.21" #lon="ngModel"
+                            [ngClass]="{'red-border-class': lon.errors && weatherForm.submitted && !isValidFormSubmitted}">
+                        <div *ngIf="lon.errors && weatherForm.submitted && !isValidFormSubmitted" [ngClass]="'error'">
+                            <div *ngIf="lon.errors.required">
+                                *longitude is required.
+                            </div>
+                        </div>
+                    </td>
+                </tr>
 
-    </form>
-    <div *ngIf="isValidFormSubmitted" [ngClass] = "'success'">
+                <tr>
+                    <td colspan="2">
+                        <button>Submit</button>
+                    </td>
+                </tr>
+            </table>
+
+        </form>
+        <div *ngIf="isValidFormSubmitted" [ngClass]="'success'">
             Coords submitted successfully.
-    </div>
+        </div>
 
     </div>
 </div>
-        
-
-
-
-
-
-

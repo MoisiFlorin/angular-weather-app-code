@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 import { UserInput } from '../userInput';
 import { WeatherService } from '../weather.service';
@@ -19,7 +19,7 @@ export class SearchFormComponent implements OnInit {
   showHide: false;
 
   constructor(private weatherService: WeatherService,
-              private router: Router) {
+    private router: Router) {
   }
 
   ngOnInit() {
@@ -30,7 +30,7 @@ export class SearchFormComponent implements OnInit {
   onFormSubmit(form: NgForm) {
     this.isValidFormSubmitted = false;
     if (form.invalid) {
-       return;
+      return;
     }
     this.isValidFormSubmitted = true;
     this.userInput = form.value;

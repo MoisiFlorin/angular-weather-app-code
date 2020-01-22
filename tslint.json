@@ -83,7 +83,24 @@
     "template-banana-in-box": true,
     "template-no-negated-async": true,
     "use-lifecycle-interface": true,
-    "use-pipe-transform-interface": true
+    "use-pipe-transform-interface": true,
+    "camelcase": true,
+    "explicit-function-return-type": true,
+    "no-explicit-any": true,
+    "no-unused-vars": true,
+    "member-access": true,
+    "typedef": [
+      true,
+      "array-destructuring",
+      "arrow-call-signature",
+      "arrow-parameter",
+      "call-signature",
+      "member-variable-declaration",
+      "object-destructuring",
+      "parameter",
+      "variable-declaration",
+      "variable-declaration-ignore-function"
+    ]
   },
   "rulesDirectory": [
     "codelyzer"

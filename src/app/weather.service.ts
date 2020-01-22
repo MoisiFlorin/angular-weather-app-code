@@ -15,10 +15,10 @@ export class WeatherService {
 
   getWeatherDataByCoords(userInput) {
     const params = new HttpParams()
-    .set('lat', userInput.lat)
-    .set('lon', userInput.lon)
-    .set('units', 'metric')
-    .set('appid', this.apiKey);
+      .set('lat', userInput.lat)
+      .set('lon', userInput.lon)
+      .set('units', 'metric')
+      .set('appid', this.apiKey);
 
     return this.http.get(this.urlWeather, { params });
 
@@ -26,10 +26,10 @@ export class WeatherService {
 
   dailyForecast(userInput) {
     const params = new HttpParams()
-    .set('lat', userInput.lat)
-    .set('lon', userInput.lon)
-    .set('units', 'metric')
-    .set('appid', this.apiKey);
+      .set('lat', userInput.lat)
+      .set('lon', userInput.lon)
+      .set('units', 'metric')
+      .set('appid', this.apiKey);
 
     return this.http.get(this.urlForecast, { params });
 

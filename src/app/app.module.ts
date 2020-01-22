@@ -16,8 +16,10 @@ import { WeatherComponent } from './weather/weather.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'weather', pathMatch: 'full' },
-  { path: 'weather', component: WeatherComponent, children: [{
-    path: 'search', component: SearchFormComponent}]
+  {
+    path: 'weather', component: WeatherComponent, children: [{
+      path: 'search', component: SearchFormComponent
+    }]
   },
   /* { path: '**', component: PageNotFoundComponent } */
 ];
