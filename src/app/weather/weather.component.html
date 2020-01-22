@@ -1,0 +1,50 @@
+<app-search-form (inputSubmit)='onFormSubmited($event)'></app-search-form>
+<div class="container-result content" *ngIf="userInput && userInput.sys">
+    <div class="tabs effect-1">
+        <!-- tab-title -->
+        <input type="radio" id="tab-1" name="tab" checked="checked">
+        <span href="#tab-item-1">Current Weather</span>
+              
+        <input type="radio" id="tab-2" name="tab">
+        <span href="#tab-item-2">Forecast Chart</span>
+              
+        <!-- tab-content -->
+        <div class="tab-content" >
+            <div class="container-current">
+                <section id="tab-item-1">
+                <!-- CURRENT WEATHER TAB-->
+                    <div class="container-current-text" *ngIf="userInput && userInput.sys">
+                        <h4>Weather in {{ userInput.name }}, {{ userInput.sys.country }} <img src="https://openweathermap.org/img/w/{{userInput.weather[0].icon}}.png"></h4>
+                        <span>Geo Coords: [Lat: {{ userInput.coord.lat}}, Lon: {{ userInput.coord.lon }}]</span>
+                        <br>
+                        <span>Weather Description: {{ userInput.weather[0].description }}</span>
+                        <br>
+                        <span>Temp: {{ userInput.main.temp | number: '1.0-0' }} &#8451;</span>
+                        <br>
+                        <span>Fells Like: {{ userInput.main.feels_like | number: '1.0-0' }} &#8451;</span>
+                        <br>
+                        <span>Wind: {{ userInput.wind.speed }} meter/sec</span>
+                        <br>
+                        <span>Humidity: {{ userInput.main.humidity }} %</span>
+                    </div>
+        
+                    <!--MAP-->
+                    <div class="container-current-map">
+                        <agm-map [latitude]="lat" [longitude]="lon">
+                            <agm-marker [latitude]="lat" [longitude]="lon"></agm-marker>
+                        </agm-map>
+                    </div>
+                </section>
+            </div>
+        
+            <!--CHART TAB-->
+            <section id="tab-item-2">
+                <div class="container-chart">
+                    <div *ngIf="chart">
+                        <canvas id="canvas">{{ chart }}</canvas>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+@import url(https://fonts.googleapis.com/css?family=Oswald:400,700);
+$font-stack: unquote("Oswald, sans-serif");
+
+$color1: #70BFCA;
+$color2: #F4F4F4; 
+$color3: #FFDCD1; 
+$color4: #DD744D;
+
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font: 16px $font-stack;
+}
+

@@ -1,0 +1,65 @@
+@import '../../styles.scss';
+
+
+.container{
+  display: flex;
+  flex-direction: column;
+
+    .container-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    form{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 35px;
+
+      .form-control{
+        width: 150px;
+        padding: 10px 15px;
+        margin: 5px ;
+        box-sizing: border-box;
+        font-size: 15px;
+      }
+
+      td{
+        color: $color4;
+      }
+      
+    button { 
+        background: $color1;
+        color: #fff;
+        font-size: 13px;
+        width: 150px;
+        height: 40px;
+        border-radius: 5px;
+        box-shadow: 1px 1px 0px 1px rgba(0,0,0,0.05);
+        transition-property: background-color, box-shadow;
+        transition-duration: 150ms;
+        transition-timing-function: ease-in-out;
+        margin-left: 70px;
+        cursor: pointer;
+    
+          &:hover {box-shadow: 1px 4px 5px 1px rgba(0,0,0,0.1);}
+    } 
+  }
+}
+
+}
+.red-border-class {
+  border: 1px solid red;
+}
+.error {
+  color: red;
+}
+.success {
+  color: green;
+}
+
+
+
