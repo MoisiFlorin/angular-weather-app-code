@@ -6,13 +6,22 @@
                 <tr>
                     <td>Latitude:</td>
                     <td>
-                        <input class="form-control" name="lat" type="number" [(ngModel)]="userInput.lat" required
-                            placeholder="e.g. 45.75" #lat="ngModel"
+                        <input class="form-control"
+                            name="lat"
+                            type="number"
+                            [(ngModel)]="userInput.lat"
+                            placeholder="e.g. 45.75"
+                            #lat="ngModel"
+                            required
+                            maxlength="2"
                             [ngClass]="{'red-border-class': lon.errors && weatherForm.submitted && !isValidFormSubmitted}">
                         <div *ngIf="lat.errors && weatherForm.submitted && !isValidFormSubmitted" [ngClass]="'error'">
-                            <div *ngIf="lat.errors.required">
+                            <div *ngIf="lat.errors?.required">
                                 *latitude is required.
                             </div>
+                            <!-- <div *ngIf="lat.errors?.maxlength">
+                                *latitude cannot be longer than 2 characters.
+                            </div> -->
                         </div>
                     </td>
                 </tr>
@@ -20,13 +29,22 @@
                 <tr>
                     <td>Longitude:</td>
                     <td>
-                        <input class="form-control" name="lon" type="number" [(ngModel)]="userInput.lon" required
-                            placeholder="e.g. 21.21" #lon="ngModel"
-                            [ngClass]="{'red-border-class': lon.errors && weatherForm.submitted && !isValidFormSubmitted}">
+                        <input class="form-control" 
+                        name="lon" 
+                        type="number" 
+                        [(ngModel)]="userInput.lon" 
+                        placeholder="e.g. 21.21" 
+                        #lon="ngModel"
+                        required
+                        maxlength="2"
+                        [ngClass]="{'red-border-class': lon.errors && weatherForm.submitted && !isValidFormSubmitted}">
                         <div *ngIf="lon.errors && weatherForm.submitted && !isValidFormSubmitted" [ngClass]="'error'">
-                            <div *ngIf="lon.errors.required">
+                            <div *ngIf="lon.errors?.required">
                                 *longitude is required.
                             </div>
+                            <!-- <div *ngIf="lon.errors?.maxlength">
+                                *logitude cannot be longer than 2 characters.
+                            </div> -->
                         </div>
                     </td>
                 </tr>

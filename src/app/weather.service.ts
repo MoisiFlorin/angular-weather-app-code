@@ -1,19 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
-import { UserInput } from './userInput';
-
-
 @Injectable({ providedIn: 'root' })
 
 export class WeatherService {
-  urlWeather = 'https://api.openweathermap.org/data/2.5/weather';
-  urlForecast = 'https://api.openweathermap.org/data/2.5/forecast';
-  apiKey = '286ba68feaa26a45be803bedbee2157e';
+  private urlWeather = 'https://api.openweathermap.org/data/2.5/weather';
+  private urlForecast = 'https://api.openweathermap.org/data/2.5/forecast';
+  private apiKey = '286ba68feaa26a45be803bedbee2157e';
 
   constructor(private http: HttpClient) { }
 
-  getWeatherDataByCoords(userInput) {
+  public getWeatherDataByCoords(userInput: { lat: string; lon: string; }) {
     const params = new HttpParams()
       .set('lat', userInput.lat)
       .set('lon', userInput.lon)
@@ -24,7 +21,7 @@ export class WeatherService {
 
   }
 
-  dailyForecast(userInput) {
+  public dailyForecast(userInput: { lat: string; lon: string; }) {
     const params = new HttpParams()
       .set('lat', userInput.lat)
       .set('lon', userInput.lon)

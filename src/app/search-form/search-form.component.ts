@@ -12,22 +12,22 @@ import { WeatherService } from '../weather.service';
 })
 
 export class SearchFormComponent implements OnInit {
-  isValidFormSubmitted = false;
-  userInput = new UserInput();
-  lat;
-  lon;
-  showHide: false;
 
-  constructor(private weatherService: WeatherService,
-    private router: Router) {
+  constructor(private weatherService: WeatherService) {
+  }
+  // tslint:disable-next-line: typedef
+  public isValidFormSubmitted = false;
+  public userInput: any = new UserInput();
+  public lat: string;
+  public lon: string;
+  public showHide: false;
+
+  @Output() public inputSubmit: any = new EventEmitter<UserInput>();
+
+  public ngOnInit(): void {
   }
 
-  ngOnInit() {
-  }
-
-  @Output() inputSubmit = new EventEmitter<UserInput>();
-
-  onFormSubmit(form: NgForm) {
+  public onFormSubmit(form: NgForm): void {
     this.isValidFormSubmitted = false;
     if (form.invalid) {
       return;

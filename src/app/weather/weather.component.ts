@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import {trigger, state, style, animate, transition} from '@angular/animations';
+
 
 import { Chart } from 'chart.js';
 import { UserInput } from '../userInput';
@@ -10,22 +10,37 @@ import { WeatherService } from '../weather.service';
   selector: 'app-weather',
   templateUrl: './weather.component.html',
   styleUrls: ['./weather.component.scss'],
-  providers: [WeatherService]
+  providers: [WeatherService],
+  animations: [
+    trigger('rotatedState', [
+      state('default', style({ transform: 'rotate(0)' })),
+      state('rotated', style({ transform: 'rotate(-360deg)' })),
+      transition('rotated => default', animate('5500ms ease-out')),
+      transition('default => rotated', animate('5500ms ease-in'))
+    ])
+  ]
 })
 export class WeatherComponent implements OnInit {
-  chart = [];
-  isValidFormSubmitted = false;
-  userInput = new UserInput();
-  lat;
-  lon;
+  public chart: any = [];
+  // tslint:disable-next-line: typedef
+  public isValidFormSubmitted = false;
+  public userInput: any = new UserInput();
+  public lat: string;
+  public lon: string;
+  public res: string;
+  public state: string = 'default';
 
   constructor(private weatherService: WeatherService) { }
 
-  ngOnInit() {
+  public ngOnInit(): void {
   }
 
+  public rotate(): void {
+    this.state = (this.state === 'default' ? 'rotated' : 'default');
 
-  onFormSubmited(userInput) {
+}
+
+  public onFormSubmited(userInput: any): void {
     console.log(userInput);
     this.weatherService.getWeatherDataByCoords(userInput)
       .subscribe((data: any) => {
@@ -38,14 +53,14 @@ export class WeatherComponent implements OnInit {
       });
 
     this.weatherService.dailyForecast(userInput)
-      .subscribe(res => {
-        const temp_max = res['list'].map(res => res.main.temp_max);
-        const temp_min = res['list'].map(res => res.main.temp_min);
-        const alldates = res['list'].map(res => res.dt)
+      .subscribe((res: any) => {
+        const tempMax: any = res.list.map((res: { main: { temp_max: number; }; }) => res.main.temp_max);
+        const tempMin: any = res.list.map((res: { main: { temp_min: number; }; }) => res.main.temp_min);
+        const alldates: any = res.list.map((res: { dt: any; }) => res.dt);
 
-        const weatherDates = []
-        alldates.forEach((res) => {
-          const jsdate = new Date(res * 1000)
+        const weatherDates: string[] = [];
+        alldates.forEach((res: number) => {
+          const jsdate: any = new Date(res * 1000);
           weatherDates.push(jsdate.toLocaleTimeString('en', { year: 'numeric', month: 'short', day: 'numeric' }));
         });
         this.chart = new Chart('canvas', {
@@ -54,12 +69,12 @@ export class WeatherComponent implements OnInit {
             labels: weatherDates,
             datasets: [
               {
-                data: temp_max,
+                data: tempMax,
                 borderColor: '#DD744D',
                 fill: false
               },
               {
-                data: temp_min,
+                data: tempMin,
                 borderColor: '#70BFCA',
                 fill: false
               },

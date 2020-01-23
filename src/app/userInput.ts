@@ -1,12 +1,12 @@
 export class UserInput {
-    lat: string;
-    lon: string;
+    public lat: string;
+    public lon: string;
 
-    name;
-    country;
-    sys;
-    weather;
-    coord;
-    main;
-    wind;
+    public name: string;
+    public country: string;
+    public sys: string;
+    public weather: string;
+    public coord: string ;
+    public main: string;
+    public wind: string;
 }

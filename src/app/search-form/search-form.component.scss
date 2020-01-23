@@ -1,6 +1,5 @@
 @import '../../styles.scss';
 
-
 .container{
   display: flex;
   flex-direction: column;
@@ -25,11 +24,13 @@
         margin: 5px ;
         box-sizing: border-box;
         font-size: 15px;
+        
+      }
+      .red-border-class {
+        border: 1px solid red;
       }
 
-      td{
-        color: $color4;
-      }
+      td {color: $color4;}
       
     button { 
         background: $color1;
@@ -42,24 +43,23 @@
         transition-property: background-color, box-shadow;
         transition-duration: 150ms;
         transition-timing-function: ease-in-out;
-        margin-left: 70px;
+        margin-left: 4.2rem;
         cursor: pointer;
     
           &:hover {box-shadow: 1px 4px 5px 1px rgba(0,0,0,0.1);}
     } 
   }
+  .error {
+    color: red;
+  }
+  .success {
+    color: green;
+  }
 }
 
 }
-.red-border-class {
-  border: 1px solid red;
-}
-.error {
-  color: red;
-}
-.success {
-  color: green;
-}
+
+
 
 
 

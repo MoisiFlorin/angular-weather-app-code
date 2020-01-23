@@ -14,8 +14,10 @@
                 <section id="tab-item-1">
                     <!-- CURRENT WEATHER TAB-->
                     <div class="container-current-text" *ngIf="userInput && userInput.sys">
-                        <h4>Weather in {{ userInput.name }}, {{ userInput.sys.country }} <img
-                                src="https://openweathermap.org/img/w/{{userInput.weather[0].icon}}.png"></h4>
+                        <h4>Weather in {{ userInput.name }}, {{ userInput.sys.country }}
+                            <img class="weather-icon" [@rotatedState]= "state" (@rotatedState.done)= "rotate($event)" src="https://openweathermap.org/img/w/{{userInput.weather[0].icon}}.png">
+                        </h4>
+                        <hr>
                         <span>Geo Coords: [Lat: {{ userInput.coord.lat}}, Lon: {{ userInput.coord.lon }}]</span>
                         <br>
                         <span>Weather Description: {{ userInput.weather[0].description }}</span>
@@ -27,7 +29,7 @@
                         <span>Wind: {{ userInput.wind.speed }} meter/sec</span>
                         <br>
                         <span>Humidity: {{ userInput.main.humidity }} %</span>
-                    </div>
+                        </div>
 
                     <!--MAP-->
                     <div class="container-current-map">
